@@ -8,6 +8,9 @@
 	// user message
 	$user_message = strtolower($input['entry'][0]['messaging'][0]['message']['text']);
 	
+	// remove symbols
+	$user_message = preg_replace('/[^\p{L}\p{N}\s]/u', '', $user_message);
+	
 	$token = "XXXXX_ENTER_REAL_TOKEN_HERE_XXXXX";
 
 	$url = "https://graph.facebook.com/v2.6/me/messages?access_token=$token";
