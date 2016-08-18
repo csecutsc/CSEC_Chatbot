@@ -19,16 +19,16 @@ function check_cases($message){
 	elseif($message == 'random'){
 		return file_get_contents('http://numbersapi.com/random/');
 	}
-	elseif($message == 'random' || $message == 'random trivia' || $message == 'random fact'){
+	elseif(preg_match("/^(random (trivia|fact))$/", $message)){
 		return file_get_contents('http://numbersapi.com/random/trivia');
 	}
-	elseif($message == 'random year fact' || $message == 'random year'){
+	elseif(preg_match("/^(random year( fact)?)$/", $message)){
 		return file_get_contents('http://numbersapi.com/random/year');
 	}
-	elseif($message == 'random date fact' || $message == 'random date'){
+	elseif(preg_match("/^(random date( fact)?)$/", $message)){
 		return file_get_contents('http://numbersapi.com/random/date');
 	}
-	elseif($message == 'random math fact' || $message == 'random math'){
+	elseif(preg_match("/^(random math( fact)?)$/", $message)){
 		return file_get_contents('http://numbersapi.com/random/math');
 	}
 }
