@@ -26,14 +26,33 @@
 	}
 	
 	// information arranged to send back to facebook
-	$jsonData = "{
-		'recipient': {
-			'id': $userID
-		},
-		'message': {
-			'text': '$answer'
-		}
-	}";
+	// for text output
+	if ($user_message != 'show meme'){
+		$jsonData = "{
+			'recipient': {
+				'id': $userID
+			},
+			'message': {
+				'text': '$answer'
+			}
+		}";
+	}
+	// for pic output
+	else{
+		$jsonData = "{
+			'recipient': {
+				'id': $userID
+			},
+			'message': {
+				'attachment':{
+					'type': 'image',
+					'payload': {
+						'url': 'https://fast-sea-68862.herokuapp.com/image.jpg'
+					}
+				}
+			}
+		}";
+	}
 
 	$ch = curl_init($url);
 
